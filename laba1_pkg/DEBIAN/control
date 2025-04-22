@@ -1,0 +1,8 @@
+Package: laba1
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: Yulia and Denis
+Depends: g++, libc6, libstdc++6, gcc-8-base | libgcc-s1, build-essential, libstdc++-dev
+Description: Factorial calculator
