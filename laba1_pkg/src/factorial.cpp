@@ -44,7 +44,6 @@ int readInteger() {
 
 int main() {
   int n = readInteger();
-
   try {
     long long fact = factorial(n);
     std::cout << "Факториал числа " << n << " равен: " << fact << std::endl;
@@ -58,6 +57,5 @@ int main() {
   catch (const std::exception& e) {
     std::cerr << "Неизвестная ошибка: " << e.what() << std::endl;
   }
-
   return 0;
 }
