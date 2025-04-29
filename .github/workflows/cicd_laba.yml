@@ -48,7 +48,7 @@ jobs:
         echo "Architecture: amd64" >> deb_pac2/DEBIAN/control
         echo "Maintainer: Yulia and Denis" >> deb_pac2/DEBIAN/control
         echo "Depends: g++, libc6, libstdc++6, gcc-8-base | libgcc-s1, build-essential, libstdc++-dev" >> deb_pac2/DEBIAN/control
-        echo "Description: Factorial calculator " >> deb_pac2/DEBIAN/control
+        echo "Description: Factorial calculator" >> deb_pac2/DEBIAN/control
 
         cd ./src && make
         cd ..
