@@ -37,11 +37,6 @@ jobs:
     needs: [build, test]
     steps:
     - uses: actions/checkout@v4
-    - name: download binary
-      uses: actions/download-artifact@v4
-      with:
-        name: laba2
-        path: ./src
     - name: deb package build
       run: |
         mkdir -p deb_pac2/DEBIAN
@@ -53,7 +48,6 @@ jobs:
         echo "Depends: g++, libc6, libstdc++6, gcc-8-base | libgcc-s1, build-essential, libstdc++-dev" >> deb_pac2/DEBIAN/control
         echo "Description: Factorial calculator" >> deb_pac2/DEBIAN/control
 
-        mkdir -p deb_pac2/usr/bin
-        cp ./src/laba2 deb_pac2/usr/bin/
-        
+        cd ./src && make
+        cd ..
         dpkg-deb --build deb_pac2 laba2_pkg.deb
