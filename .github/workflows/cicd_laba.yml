@@ -45,13 +45,13 @@ jobs:
     - name: deb package build
       run: |
         mkdir -p deb_pac2/DEBIAN
-        echo "Package: laba2 > deb-package/DEBIAN/control
-        echo "Version: 2.0" >> deb-package/DEBIAN/control
-        echo "Section: utils" >> deb-package/DEBIAN/control
-        echo "Architecture: amd64" >> deb-package/DEBIAN/control
-        echo "Maintainer: Yulia and Denis>> deb-package/DEBIAN/control
-        echo "Depends: g++, libc6, libstdc++6, gcc-8-base | libgcc-s1, build-essential, libstdc++-dev" >> deb-package/DEBIAN/control
-        echo "Description: Factorial calculator" >> deb-package/DEBIAN/control
+        echo "Package: laba2 > deb_pac2/DEBIAN/control
+        echo "Version: 2.0" >> deb_pac2/DEBIAN/control
+        echo "Section: utils" >> deb_pac2/DEBIAN/control
+        echo "Architecture: amd64" >> deb_pac2/DEBIAN/control
+        echo "Maintainer: Yulia and Denis>> deb_pac2/DEBIAN/control
+        echo "Depends: g++, libc6, libstdc++6, gcc-8-base | libgcc-s1, build-essential, libstdc++-dev" >> deb_pac2/DEBIAN/control
+        echo "Description: Factorial calculator" >> deb_pac2/DEBIAN/control
 
         mkdir -p deb_pac2/usr/bin
         cp ./src/laba2 deb_pac2/usr/bin/
