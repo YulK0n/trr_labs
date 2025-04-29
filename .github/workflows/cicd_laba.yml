@@ -52,3 +52,13 @@ jobs:
         cd ..
         dpkg-deb --build deb_pac2 laba2_pkg.deb
         dpkg -c laba2_pkg.deb
+        
+    - name: create-release
+      uses: ncipollo/release-action@v1.14.0
+      with:
+        artifactErrorsFailBuild: true 
+        artifact: laba2_pkg.deb  
+        body: Factorial 
+        name: laba2 
+        tag: laba2-release
+        token: ${{ secrets.MY_SECRET_NAME }}
