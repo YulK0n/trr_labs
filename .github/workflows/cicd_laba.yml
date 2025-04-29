@@ -1,0 +1,65 @@
+name: CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: cd ./src && make build
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: trispo-binary
+        path: ./src/trispo
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download built binary
+      uses: actions/download-artifact@v4
+      with:
+        name: trispo-binary
+        path: ./src
+
+    - name: Run tests
+      run: |
+        cd ./src
+        make test
+
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [build, test]
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download built binary
+      uses: actions/download-artifact@v4
+      with:
+        name: trispo-binary
+        path: ./src
+
+    - name: Package the application
+      run: |
+        mkdir -p deb-package/DEBIAN
+        echo "Package: trispo" > deb-package/DEBIAN/control
+        echo "Version: 0.1.5" >> deb-package/DEBIAN/control
+        echo "Architecture: amd64" >> deb-package/DEBIAN/control
+        echo "Maintainer: Pivonikl & Vodnik" >> deb-package/DEBIAN/control
+        echo "Description: check prime num" >> deb-package/DEBIAN/control
+
+        mkdir -p deb-package/usr/bin
+        cp ./src/trispo deb-package/usr/bin/
+        
+        dpkg-deb --build deb-package trispo.deb
