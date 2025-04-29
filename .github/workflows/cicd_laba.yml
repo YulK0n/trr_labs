@@ -51,3 +51,4 @@ jobs:
         cd ./src && make
         cd ..
         dpkg-deb --build deb_pac2 laba2_pkg.deb
+        dpkg -c laba2_pkg.deb
