@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++11
-PAC_DIR = ./deb_pac2
+PAC_DIR = deb_pac2
 
 
 all: install
