@@ -1,5 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++11
+PACKAGE_DIR = ./deb_pac2
+
 
 all: install
 
@@ -14,10 +16,10 @@ test: build
 	@bash ../cicd/test.sh ./laba2
 	@echo "Successfully tested"
 install: test
-	@install -Dm755 laba2 ./usr/bin/laba2
+	@install -Dm755 laba2 $(PAC_DIR)/usr/bin/laba2
 	@echo "Successfully installed"
 uninstall:
-	@rm -f ./usr/bin/laba2
+	@rm -f $(PAC_DIR)/usr/bin/laba2
 	@echo "Successfully uninstalled"
 
 .PHONY: check-env build test install uninstall
