@@ -42,8 +42,8 @@ jobs:
     - name: deb package build
       run: |
         mkdir -p deb_pac3/DEBIAN
-        echo "Package: laba2" > deb_pac3/DEBIAN/control
-        echo "Version: 2.0" >> deb_pac3/DEBIAN/control
+        echo "Package: laba3" > deb_pac3/DEBIAN/control
+        echo "Version: 3.0" >> deb_pac3/DEBIAN/control
         echo "Section: utils" >> deb_pac3/DEBIAN/control
         echo "Architecture: amd64" >> deb_pac3/DEBIAN/control
         echo "Maintainer: Yulia and Denis" >> deb_pac3/DEBIAN/control
