@@ -87,8 +87,9 @@ jobs:
       with:
         context: .
         file: Dockerfile
-        push: true
+        push: false
         tags: ${{ env.DOCKER_IMAGE }}:latest
     - name: verify container
       run: |
         echo "5" | docker run -i --rm ${{ env.DOCKER_IMAGE }}:latest
+        docker ps -a
