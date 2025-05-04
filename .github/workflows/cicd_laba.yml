@@ -1,4 +1,4 @@
-name: ci-cd laba2
+name: ci-cd laba3
 
 on:
   push:
@@ -16,8 +16,8 @@ jobs:
     - name: upload build artifact
       uses: actions/upload-artifact@v4
       with:
-        name: laba2
-        path: ./src/laba2
+        name: laba3
+        path: ./src/laba3
 
   test:
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
     - name: download binary
       uses: actions/download-artifact@v4
       with:
-        name: laba2
+        name: laba3
         path: ./src
     - name: Run tests
       run: cd ./src && make test
@@ -41,19 +41,19 @@ jobs:
     - uses: actions/checkout@v4
     - name: deb package build
       run: |
-        mkdir -p deb_pac2/DEBIAN
-        echo "Package: laba2" > deb_pac2/DEBIAN/control
-        echo "Version: 2.0" >> deb_pac2/DEBIAN/control
-        echo "Section: utils" >> deb_pac2/DEBIAN/control
-        echo "Architecture: amd64" >> deb_pac2/DEBIAN/control
-        echo "Maintainer: Yulia and Denis" >> deb_pac2/DEBIAN/control
-        echo "Depends: g++, libc6, libstdc++6, gcc-8-base | libgcc-s1, build-essential, libstdc++-dev" >> deb_pac2/DEBIAN/control
-        echo "Description: Factorial calculator" >> deb_pac2/DEBIAN/control
+        mkdir -p deb_pac3/DEBIAN
+        echo "Package: laba2" > deb_pac3/DEBIAN/control
+        echo "Version: 2.0" >> deb_pac3/DEBIAN/control
+        echo "Section: utils" >> deb_pac3/DEBIAN/control
+        echo "Architecture: amd64" >> deb_pac3/DEBIAN/control
+        echo "Maintainer: Yulia and Denis" >> deb_pac3/DEBIAN/control
+        echo "Depends: g++, libc6, libstdc++6, gcc-8-base | libgcc-s1, build-essential, libstdc++-dev" >> deb_pac3/DEBIAN/control
+        echo "Description: Factorial calculator" >> deb_pac3/DEBIAN/control
 
         cd ./src && make
         cd ..
-        dpkg-deb --build deb_pac2 laba2_pkg.deb
-        dpkg -c laba2_pkg.deb
+        dpkg-deb --build deb_pac3 laba3_pkg.deb
+        dpkg -c laba3_pkg.deb
         
     #- name: create-release
      # uses: ncipollo/release-action@v1.14.0
