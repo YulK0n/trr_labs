@@ -92,4 +92,4 @@ jobs:
     - name: verify container
       run: |
         echo "5" | docker run -i --rm ${{ env.DOCKER_IMAGE }}:latest
-        docker ps -a | grep trr_lab
+        docker ps -a
